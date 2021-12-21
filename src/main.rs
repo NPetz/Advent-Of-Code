@@ -1,6 +1,8 @@
+mod three;
 mod two;
 mod utils;
 
 fn main() {
-    two::run()
+    // two::run();
+    three::run();
 }
