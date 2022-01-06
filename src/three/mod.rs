@@ -60,7 +60,7 @@ fn binary_vector_to_integer(vec: Vec<u32>) -> u32 {
 fn find_one_input(l: Vec<Vec<u32>>, i: usize, is_most: bool) -> Vec<u32> {
     let len: u32 = l.len().try_into().unwrap();
 
-    if (len == 1 || i > 11) {
+    if len == 1 || i > 11 {
         return l[0].clone();
     }
 
