@@ -1,9 +1,16 @@
 use crate::utils::read_input;
 
 pub fn run() {
+    println!("\nDay 2");
+
     let contents = read_input("two");
 
+    println!("\nPart I");
+
     part_one(&contents);
+
+    println!("\nPart II");
+
     part_two(&contents);
 }
 

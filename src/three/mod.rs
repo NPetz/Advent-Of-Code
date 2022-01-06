@@ -1,8 +1,16 @@
 use crate::utils::read_input;
 
 pub fn run() {
+    println!("\nDay 3");
+
     let contents = read_input("three");
-    // part_one(&contents);
+
+    println!("\nPart I");
+
+    part_one(&contents);
+
+    println!("\nPart II");
+
     part_two(&contents);
 }
 
@@ -33,7 +41,7 @@ fn part_one(input: &str) {
     let gamma = binary_vector_to_integer(gamma);
     let epsilon = binary_vector_to_integer(epsilon);
 
-    println!("power consumption: {}", gamma * epsilon)
+    println!("{}", gamma * epsilon)
 }
 
 fn part_two(input: &str) {

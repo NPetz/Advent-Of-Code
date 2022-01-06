@@ -5,7 +5,7 @@ mod utils;
 
 fn main() {
     // one::run();
-    // two::run();
-    // three::run();
+    two::run();
+    three::run();
     four::run();
 }
