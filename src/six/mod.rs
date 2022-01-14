@@ -17,7 +17,7 @@ pub fn run() {
 fn part_one(input: &str) {
     // naive way by iterating every day
 
-    let mut school: Vec<u32> = input.split(",").map(|s| s.parse().unwrap()).collect();
+    let mut school: Vec<u32> = input.split(',').map(|s| s.parse().unwrap()).collect();
 
     for _ in 0..80 {
         let mut new_fish: Vec<u32> = vec![];
@@ -39,7 +39,7 @@ fn part_one(input: &str) {
 fn part_two(input: &str) {
     // there must be a way to recursively get the number for every fish, or a formula
 
-    let school: Vec<u32> = input.split(",").map(|s| s.parse().unwrap()).collect();
+    let school: Vec<u32> = input.split(',').map(|s| s.parse().unwrap()).collect();
 
     // naive implementaion takes too long, try with recursive
     // recursive also takes too long, so let's do memoization too
@@ -74,5 +74,5 @@ fn spawn(f: u128, d: u128) -> u128 {
         return spawn(6, d - 1) + spawn(8, d - 1);
     }
 
-    return spawn(0, d - f);
+    spawn(0, d - f)
 }

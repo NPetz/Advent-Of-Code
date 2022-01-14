@@ -22,7 +22,7 @@ fn part_one(input: &str) {
     let numbers: Vec<u32> = lines
         .next()
         .unwrap()
-        .split(",")
+        .split(',')
         .map(|n| n.parse::<u32>().unwrap())
         .collect();
 
@@ -46,8 +46,8 @@ fn part_one(input: &str) {
 
     'outer: for i in 0..numbers.len() {
         for b in &boards {
-            if check_bingo(&b, &numbers[0..i]) {
-                let points = calculate_points(&b, &numbers[0..i]);
+            if check_bingo(b, &numbers[0..i]) {
+                let points = calculate_points(b, &numbers[0..i]);
                 println!("{:?}", points);
                 break 'outer;
             }
@@ -61,7 +61,7 @@ fn part_two(input: &str) {
     let numbers: Vec<u32> = lines
         .next()
         .unwrap()
-        .split(",")
+        .split(',')
         .map(|n| n.parse::<u32>().unwrap())
         .collect();
 
@@ -95,7 +95,7 @@ fn part_two(input: &str) {
         if boards.len() == 1 {
             last_board = boards[0].clone();
         }
-        if boards.len() == 0 {
+        if boards.is_empty() {
             last_index = i;
             break;
         }
@@ -105,14 +105,14 @@ fn part_two(input: &str) {
     println!("{:?}", points);
 }
 
-fn check_bingo(board: &Vec<u32>, numbers: &[u32]) -> bool {
+fn check_bingo(board: &[u32], numbers: &[u32]) -> bool {
     if numbers.len() < 5 {
         return false;
     }
 
     for i in 0..5 {
         let row = &board[5 * i..5 * i + 5];
-        if row.into_iter().all(|n| numbers.contains(n)) {
+        if row.iter().all(|n| numbers.contains(n)) {
             return true;
         }
     }
@@ -133,10 +133,6 @@ fn check_bingo(board: &Vec<u32>, numbers: &[u32]) -> bool {
     false
 }
 
-fn calculate_points(board: &Vec<u32>, numbers: &[u32]) -> u32 {
-    board
-        .into_iter()
-        .filter(|&v| !numbers.contains(v))
-        .sum::<u32>()
-        * numbers.last().unwrap()
+fn calculate_points(board: &[u32], numbers: &[u32]) -> u32 {
+    board.iter().filter(|&v| !numbers.contains(v)).sum::<u32>() * numbers.last().unwrap()
 }

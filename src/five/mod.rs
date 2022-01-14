@@ -21,16 +21,14 @@ pub fn run() {
 }
 
 fn part_one(input: &str) {
-    let points: Vec<Point> = input
+    let counts = input
         .lines()
         .map(|l| Line::from_str(l).unwrap().get_distinct_hortogonal_points())
         .flatten()
-        .collect();
-
-    let counts = points.into_iter().fold(HashMap::new(), |mut map, p| {
-        map.entry(p).and_modify(|frq| *frq += 1).or_insert(1);
-        map
-    });
+        .fold(HashMap::new(), |mut map, p| {
+            map.entry(p).and_modify(|frq| *frq += 1).or_insert(1);
+            map
+        });
 
     let counts_more_than_one = counts.into_values().filter(|&v| v > 1).count();
 
@@ -38,16 +36,14 @@ fn part_one(input: &str) {
 }
 
 fn part_two(input: &str) {
-    let points: Vec<Point> = input
+    let counts = input
         .lines()
         .map(|l| Line::from_str(l).unwrap().get_distinct_points())
         .flatten()
-        .collect();
-
-    let counts = points.into_iter().fold(HashMap::new(), |mut map, p| {
-        map.entry(p).and_modify(|frq| *frq += 1).or_insert(1);
-        map
-    });
+        .fold(HashMap::new(), |mut map, p| {
+            map.entry(p).and_modify(|frq| *frq += 1).or_insert(1);
+            map
+        });
 
     let counts_more_than_one = counts.into_values().filter(|&v| v > 1).count();
 
@@ -70,7 +66,7 @@ impl FromStr for Point {
     type Err = String;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let coords: Vec<i32> = s.split(",").map(|n| n.parse().unwrap()).collect();
+        let coords: Vec<i32> = s.split(',').map(|n| n.parse().unwrap()).collect();
 
         match coords[..] {
             [x, y] => Ok(Point { x, y }),

@@ -51,7 +51,7 @@ fn part_two(input: &str) {
         .collect();
 
     let oxygen = binary_vector_to_integer(find_one_input(lines.clone(), 0, true));
-    let co2 = binary_vector_to_integer(find_one_input(lines.clone(), 0, false));
+    let co2 = binary_vector_to_integer(find_one_input(lines, 0, false));
 
     println!("{}", oxygen * co2);
 }
@@ -59,8 +59,8 @@ fn part_two(input: &str) {
 fn binary_vector_to_integer(vec: Vec<u32>) -> u32 {
     let len = vec.len() - 1;
     vec.iter().enumerate().fold(0, |a, (i, v)| match v {
-        0 => a + 0,
-        1 => a + (1 * 2_u32.pow(len as u32 - i as u32)),
+        0 => a,
+        1 => a + (2_u32.pow(len as u32 - i as u32)),
         _ => a,
     })
 }
