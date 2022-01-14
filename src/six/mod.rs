@@ -1,5 +1,3 @@
-use std::{time::Instant, vec};
-
 use crate::utils::read_input;
 
 pub fn run() {
